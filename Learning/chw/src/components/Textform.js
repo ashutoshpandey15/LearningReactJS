@@ -15,6 +15,10 @@ export default function Textform(props) {
     console.log("Onchange");
     setText(event.target.value);
   };
+  const toReverse = () => {
+    let newText = text.split("").reverse().join("");
+    setText(newText);
+  };
 
   const [text, setText] = useState(""); // shows default text value
   return (
@@ -33,8 +37,11 @@ export default function Textform(props) {
         <button className="btn mx-2 btn-primary" onClick={Onclickup}>
           To Uppercase
         </button>
-        <button className="btn btn-primary" onClick={Onclickdown}>
+        <button className="btn btn-primary mx-2" onClick={Onclickdown}>
           To Lowercase
+        </button>
+        <button className="btn btn-primary mx-2" onClick={toReverse}>
+          To Reverse
         </button>
       </div>
       <div className="container">
