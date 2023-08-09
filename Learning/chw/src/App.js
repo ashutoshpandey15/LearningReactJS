@@ -1,8 +1,10 @@
-// import Aboutus from "./components/Aboutus";
+import Aboutus from "./components/Aboutus";
 // import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
 import Textform from "./components/Textform";
 import React, { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -21,19 +23,48 @@ function App() {
   };
   return (
     <>
-      <Navbar
-        title="TextUtils"
-        abouttext="About TextUtils"
-        mode={mode}
-        toggleMode={toggleMode}
-      />
-    
-      <div className="container">
-        <Textform heading="Enter the text to analyze" mode={mode} />
-      </div>
-      {/* <div>
-        <Aboutus />
-      </div> */}
+     
+      <BrowserRouter>
+        <Navbar
+          title="TextUtils"
+          abouttext="AboutUs"
+          mode={mode}
+          toggleMode={toggleMode}
+        />
+        
+        <div className="container my-4" mode={mode}>
+          <Routes>
+            <Route exact path="/aboutus" element={<Aboutus />}></Route>
+            <Route
+              exact path="/"
+              element={
+                <Textform
+                  
+                  heading="Enter Text to analyze "
+                  mode={mode}
+                />
+              }
+            ></Route>
+          </Routes>
+        </div>
+      </BrowserRouter>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </>
   );
 }
